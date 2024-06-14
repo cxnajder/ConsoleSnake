@@ -300,5 +300,5 @@ private:
 };
 
 int main() {
-    SnkaeGame game = { SnkaeGame::GameMode::EASY };
+    SnkaeGame game = { SnkaeGame::GameMode::MEDIUM };
 }

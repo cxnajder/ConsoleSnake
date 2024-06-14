@@ -8,4 +8,8 @@ Te changes I made are:
 - used my own coding style
 
 ## Demo:
-![ConsoleSnakeDemo](https://github.com/cxnajder/ConsoleSnake/assets/98214055/1efe4322-1c19-412a-9e21-8e5ff9f763d5)
+![ConsoleSnakeDemo](https://github.com/cxnajder/ConsoleSnake/assets/98214055/e92d2b0f-22d4-4036-a141-a4c63d3cb42a)
+https://github.com/cxnajder/ConsoleSnake/assets/98214055/350bb7d8-d457-4161-b232-6abc5956f787
+
+
+

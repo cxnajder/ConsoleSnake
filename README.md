@@ -2,7 +2,7 @@
 
 ## Description
 The snake is inspired on tutorial videos from https://www.youtube.com/@NVitanovic
-Teh changes I made are:
+The changes I made are:
 - enclosed the game in a C++ class (instead of using global variables and functions)
 - added linux equivalents of `_kbhit()` and `_getch()` from `<conio.h>` for Linux with a healp of `#if defined()` macros. (The `<conio.h>` library is supported only on Windows)
 - used my own coding style

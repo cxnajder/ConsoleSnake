@@ -73,7 +73,7 @@ public:
             Input();
             Logic();
             Draw();
-            SleepForXMs(_REFRESH_RATE_MS);
+            SleepForXMs(currentRefreshRateMs);
         }
     }
 
@@ -81,8 +81,11 @@ private:
     GameMode gameMode;
     const int _MAP_WIDTH = 15;
     const int _MAP_HEIGHT = 15;
-    int _REFRESH_RATE_MS = 100;
     const int _AMOUNT_OF_FROGS_SPAWNING = 4;
+    const char _SPRINT_KEY = '.';
+    const int START_REFRESH_RATE_MS = 100;
+
+    int currentRefreshRateMs = 100;
     bool gameOver;
     struct Segment
     {
@@ -183,7 +186,13 @@ private:
     void Input() {
         if (_kbhit())
         {
-            switch (_getch())
+            const char key = _getch();
+            if (key == _SPRINT_KEY)
+                currentRefreshRateMs = START_REFRESH_RATE_MS / 2;
+            else
+                currentRefreshRateMs = START_REFRESH_RATE_MS;
+
+            switch (key)
             {
             case 'a': 
             case 'A':
@@ -264,8 +273,8 @@ private:
 
                 if (gameMode == HARD)
                 {
-                    if (_REFRESH_RATE_MS > 10)
-                        _REFRESH_RATE_MS -= 10;
+                    if (currentRefreshRateMs > 10)
+                        currentRefreshRateMs -= 10;
                 }
             }
 

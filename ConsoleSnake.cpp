@@ -82,6 +82,7 @@ private:
     const int _MAP_WIDTH = 15;
     const int _MAP_HEIGHT = 15;
     int _REFRESH_RATE_MS = 100;
+    const int _AMOUNT_OF_FROGS_SPAWNING = 4;
     bool gameOver;
     struct Segment
     {
@@ -94,7 +95,7 @@ private:
         std::vector<Segment> tail;
     };
     Snake snake;
-    Segment frog;
+    std::vector<Segment> frogs;
     enum MovementDirection { STOP = 0, LEFT, RIGHT, UP, DOWN };
     MovementDirection snakeDirection;
     int score;
@@ -105,8 +106,15 @@ private:
         snake.head.x = _MAP_WIDTH / 2;
         snake.head.y = _MAP_HEIGHT / 2;
         snakeDirection = STOP;
-        frog.x = std::rand() % _MAP_WIDTH;
-        frog.y = std::rand() % _MAP_HEIGHT;
+        for(int i = 0; i < _AMOUNT_OF_FROGS_SPAWNING; ++i)
+        {
+            frogs.push_back( { 0, 0 } ); // Known issue: Frogs can stock on each other.
+        }
+        for (auto& frog: frogs)
+        {
+            frog.x = std::rand() % _MAP_WIDTH; 
+            frog.y = std::rand() % _MAP_HEIGHT;
+        }
         score = 0;
         snakeHasEaten = false;
     }
@@ -134,20 +142,27 @@ private:
             {
                 if (j == snake.head.x && i == snake.head.y)
                     std::cout << "S";
-                else if (j == frog.x && i == frog.y)
-                    std::cout << "F";
-                else if (snake.tail.empty())
-                        std::cout << " ";
                 else
                 {
                     bool printed = false;
-                    for (const auto& s : snake.tail)
-                        if (j == s.x && i == s.y)
+
+                    for (const auto& frog: frogs)
+                        if (j == frog.x && i == frog.y)
                         {
-                            std::cout << "s";
+                            std::cout << "F";
                             printed = true;
                             break;
                         }
+
+                    if(!printed)
+                        for (const auto& s : snake.tail)
+                            if (j == s.x && i == s.y)
+                            {
+                                std::cout << "s";
+                                printed = true;
+                                break;
+                            }
+                    
                     if(!printed)
                         std::cout << " ";
                 }
@@ -238,20 +253,21 @@ private:
         }
 
         // On eat
-        if (snake.head.x == frog.x && snake.head.y == frog.y)
-        {
-            ++score;
-            snakeHasEaten = true;
-
-            frog.x = std::rand() % _MAP_WIDTH;
-            frog.y = std::rand() % _MAP_HEIGHT;
-
-            if (gameMode == HARD)
+        for(auto& frog: frogs)
+            if (snake.head.x == frog.x && snake.head.y == frog.y)
             {
-                if (_REFRESH_RATE_MS > 10)
-                    _REFRESH_RATE_MS -= 10;
+                ++score;
+                snakeHasEaten = true;
+
+                frog.x = std::rand() % _MAP_WIDTH;
+                frog.y = std::rand() % _MAP_HEIGHT;
+
+                if (gameMode == HARD)
+                {
+                    if (_REFRESH_RATE_MS > 10)
+                        _REFRESH_RATE_MS -= 10;
+                }
             }
-        }
 
         // Handle wall colisions
         if (gameMode <= EASY)

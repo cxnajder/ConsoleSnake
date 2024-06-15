@@ -60,11 +60,11 @@ int _kbhit() {
 #endif
 
 
-class SnkaeGame {
+class SnakeGame {
 public:
     enum GameMode {IMMORTAL = 0, EASY, MEDIUM, HARD };
 
-    SnkaeGame(GameMode mode)
+    SnakeGame(GameMode mode)
         : gameMode(mode)
     {
         Setup();
@@ -325,5 +325,5 @@ private:
 };
 
 int main() {
-    SnkaeGame game = { SnkaeGame::GameMode::MEDIUM };
+    SnakeGame game = { SnakeGame::GameMode::MEDIUM };
 }

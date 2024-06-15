@@ -1,10 +1,6 @@
-PROJECT_NAME := ConsoleSnake
-SRC := $(PROJECT_NAME).cpp
-BUILD_DIR := Build/MakeBuild
-TARGET := $(BUILD_DIR)/$(PROJECT_NAME)
+PROJECT_NAME = ConsoleSnake
+BUILD_DIR = Build/MakeBuild/
 
-all: $(TARGET)
-
-$(TARGET): $(SRC)
+$(BUILD_DIR)$(PROJECT_NAME): $(PROJECT_NAME).cpp
 	@mkdir -p $(BUILD_DIR)
-	g++ $(SRC) -o $(TARGET)
+	g++ $(PROJECT_NAME).cpp -o $@

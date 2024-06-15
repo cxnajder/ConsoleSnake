@@ -13,16 +13,21 @@ To select one you need to specify it in the game constructor like:
 SnakeGame game = { SnakeGame::GameMode::MEDIUM };
 ```
 Each game mode has its own features:
-
-IMMORTAL:
-  You can't be killed by hitting the wall or biting your tail. (The only way to end the game is by clicking the `X` key.)
-  Walking into a wall will teleport the snake's head into the other side.
-EASY:
-  You can die biting your tail, but walls will still teleport you to the other side.
-MEDIUM:
-  You will die by bting your tail or hitting the wall.
-HARD:
-  You will die by biting your tail or hitting the wall. On each eaten frog the snake will go faster (till a certain point). This should make the game increasingly harder
+<ul>
+<li><b>IMMORTAL:</b><br />
+You can't be killed by hitting the wall or biting your tail. (The only way to end the game is by clicking the `X` key.)
+Walking into a wall will teleport the snake's head into the other side.
+</li>
+<li><b>EASY:</b><br />
+You can die biting your tail, but walls will still teleport you to the other side.
+</li>
+<li><b>MEDIUM:</b><br />
+You will die by bting your tail or hitting the wall.
+</li>
+<li><b>HARD:</b><br />
+You will die by biting your tail or hitting the wall. On each eaten frog the snake will go faster (till a certain point). This should make the game increasingly harder
+</li>
+</ul>
 
 Control snakes directions with `WASD` / `wasd` keys.
 You can activate sprint with the `.` key. (You can't control directions while sprinting)

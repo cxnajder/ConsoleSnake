@@ -1,7 +1,8 @@
 # ASCII Snake In Console/Terminal Window
 
 ## Description
-The snake is inspired on tutorial videos from https://www.youtube.com/@NVitanovic <br />
+The snake is inspired on tutorial videos from https://www.youtube.com/@NVitanovic
+
 The changes I made are:
 - enclosed the game in a C++ class (instead of using global variables and functions)
 - added linux equivalents of `_kbhit()` and `_getch()` from `<conio.h>` for Linux with a healp of `#if defined()` macros. (The `<conio.h>` library is supported only on Windows)
@@ -15,6 +16,8 @@ To select one you need to specify it in the game constructor like:
 ```
 SnakeGame game = { SnakeGame::GameMode::MEDIUM };
 ```
+There is also 0 arg constructor which runs  `MEDIUM` game mode.
+
 Each game mode has its own features:
 <ul>
 <li><b>IMMORTAL:</b><br />

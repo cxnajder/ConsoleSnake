@@ -1,10 +1,13 @@
 # ASCII Snake In Console/Terminal Window
 
 ## Description
-The snake is inspired on tutorial videos from https://www.youtube.com/@NVitanovic
+The snake is inspired on tutorial videos from https://www.youtube.com/@NVitanovic <br />
 The changes I made are:
 - enclosed the game in a C++ class (instead of using global variables and functions)
 - added linux equivalents of `_kbhit()` and `_getch()` from `<conio.h>` for Linux with a healp of `#if defined()` macros. (The `<conio.h>` library is supported only on Windows)
+- Created a makefile for linux build
+- replaced raw c-style arrays with vectors
+- added new features like multiple frogs spawning, different game modes and sprint kaey
 - used my own coding style
 
 The game has 4 modes: `IMMORTAL`, `EASY`, `MEDIUM` and `HARD`;

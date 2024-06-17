@@ -27,6 +27,10 @@ public:
         }
     }
 
+    SnakeGame()
+        : SnakeGame(GameMode::MEDIUM)
+    {}
+
 private:
     GameMode gameMode;
     const int _MAP_WIDTH = 15;
@@ -275,5 +279,5 @@ private:
 };
 
 int main() {
-    SnakeGame game = { SnakeGame::GameMode::MEDIUM };
+    SnakeGame game;
 }

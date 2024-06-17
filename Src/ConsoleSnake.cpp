@@ -279,5 +279,5 @@ private:
 };
 
 int main() {
-    SnakeGame game;
+    SnakeGame game = { SnakeGame::GameMode::MEDIUM };
 }
